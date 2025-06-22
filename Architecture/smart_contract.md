@@ -1,7 +1,20 @@
 ---
 
 
-## System Architecture
+# System Architecture
+
+# Table of Contents for Contracts
+1. [System Architecture](#system-architecture)
+2. [Core Contract Analysis](#core-contract-analysis)
+3. [Data Structures Deep Dive](#data-structures-deep-dive)
+4. [Function-by-Function Analysis](#function-by-function-analysis)
+5. [Revenue Distribution Mechanics](#revenue-distribution-mechanics)
+6. [Reputation System Implementation](#reputation-system-implementation)
+7. [Graph Theory Implementation](#graph-theory-implementation)
+8. [Security Analysis](#security-analysis)
+9. [Integration Patterns](#integration-patterns)
+10. [Gas Optimization Strategies](#gas-optimization-strategies)
+
 ---
 The Proof of Inspiration system implements a decentralized content attribution and revenue sharing protocol. It consists of two interconnected smart contracts that manage the entire lifecycle of creative content and its derivatives.
 
