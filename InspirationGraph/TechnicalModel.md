@@ -1,6 +1,6 @@
-##  2. Inspiration Graph: Technical Data Model
+#  2. Inspiration Graph: Technical Data Model
 
-### 2.1 Graph Representation
+## 2.1 Graph Representation
 
 The **Inspiration Graph** is formalized as a **Directed Acyclic Graph (DAG)**:
 
@@ -23,7 +23,7 @@ $$
 
 ---
 
-### 2.2 Node Metadata Schema (EVM-Indexed)
+## 2.2 Node Metadata Schema (EVM-Indexed)
 
 #### Solidity-Friendly Metadata Schema (Struct):
 
@@ -45,7 +45,7 @@ struct InspirationNode {
 
 ---
 
-### 2.3 Proof Integrity and Verification System
+## 2.3 Proof Integrity and Verification System
 
 #### a) **zkProof System Design**
 
