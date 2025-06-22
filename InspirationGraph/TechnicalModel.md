@@ -49,7 +49,7 @@ struct InspirationNode {
 
 #### a) **zkProof System Design**
 
-* **`proofHash`** → SHA256 commitment of zk-SNARK output.
+* **`proofHash`** → SHA256 commitment of zk SNARK output.
 * zk Circuit → Takes as inputs:
 
 $$
