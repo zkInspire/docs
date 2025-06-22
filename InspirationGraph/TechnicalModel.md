@@ -44,44 +44,64 @@ struct InspirationNode {
 * **Canonicalization Contract** → Optional pre-deployment content integrity check.
 
 ---
+Here's your section **2.3 Proof Integrity and Verification System** fully polished with LaTeX formatting, markdown structuring, and code blocks corrected:
 
-### 2.3 Proof Integrity and Verification System
+---
 
-#### a) **zkProof System Design**
+## 2.3 Proof Integrity and Verification System
 
-* **`proofHash`** → SHA256 commitment of zk SNARK output.
-* zk Circuit → Takes as inputs:
+### a) **zkProof System Design**
+
+* **`proofHash`** → SHA256 commitment of zk-SNARK output.
+* The zk-SNARK **circuit** takes the following **public inputs**:
 
 $$
 \text{Inputs: } (\text{parent\_hash}, \text{child\_CID}, \text{salt})
 $$
 
-→ Computes a **proof of derivation** where:
+Where:
 
-1. `parent_hash` → Keccak256 of parent content
-2. `child_CID` → IPFS CID (content address)
-3. `salt` → Random nonce for uniqueness in commitments
+* \$\text{parent\_hash}\$ → `keccak256` hash of the parent content
+* \$\text{child\_CID}\$ → IPFS content identifier (CID) of the derivative work
+* \$\text{salt}\$ → Random nonce for uniqueness and privacy
 
->  **Zero-Knowledge Privacy** → The **content of derivation is hidden**; only the proof verifies cryptographically that derivation took place from parent to child.
+####  What it proves:
+
+> The circuit proves that the derivative content is **cryptographically inspired** from the original, without revealing the actual derivation logic or the content.
+
+* **Zero-Knowledge Privacy** is preserved — only the proof is exposed, not the underlying derivation method or data.
+* The commitment (`proofHash`) is stored on-chain to prevent manipulation.
 
 ---
 
-#### b) **Advanced zkML Proofs (Future Planned)**
+### b) **Advanced zkML Proofs (Planned Upgrade)**
 
-* **zkML Integration (WIP)** → Use zkSNARKs to encode *style similarity* or *content feature extraction*.
+> Future integration of **Zero-Knowledge Machine Learning (zkML)** to support **semantic inspiration verification**.
 
-  * Example circuits → **ResNet embeddings**, **audio fingerprints**, or **text semantic embeddings**.
-  * Prove **“inspiration proximity”** in latent feature spaces **without revealing actual embeddings**.
+#### Use case:
+
+* Generate embeddings using models like **ResNet**, **CLIP**, or **audio/text fingerprinting**.
+* Prove in zero-knowledge that:
+
+$$
+\left\lVert \text{Embedding}_{\text{child}} - \text{Embedding}_{\text{parent}} \right\rVert \leq \text{Threshold}
+$$
+
+#### zk Circuit Flow:
 
 ```plaintext
-Input → Embedding(child) - Embedding(parent) → zk circuit → ≤ threshold → Proof
+Input → Embedding(child) - Embedding(parent)
+      → Check similarity threshold
+      → zk-SNARK proof → Commitment
 ```
 
-
+This enables verifying **inspiration proximity** in **latent feature space**, without revealing actual features or content.
 
 ---
 
-#### c) **Onchain Verification Pipeline:**
+### c) **Onchain Verification Pipeline**
+
+A modular, upgradable zk-verifier pipeline operates as follows:
 
 ```plaintext
 1. submitProof(bytes calldata proof, bytes32 parent, bytes32 child)
@@ -89,7 +109,5 @@ Input → Embedding(child) - Embedding(parent) → zk circuit → ≤ threshold 
 3. emit InspirationProven(child, parent, msg.sender)
 ```
 
-* **Verifier Contract** → Modular, supports circuit upgrades.
-* **Proof Hash Storage** → Immutable commitment → protects against forgery or post-hoc manipulation.
 ---
 
