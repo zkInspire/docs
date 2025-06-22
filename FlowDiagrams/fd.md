@@ -1,4 +1,4 @@
-# ** Detailed User Flow (With Uniswap, Zora, IPFS)**
+# Detailed User Flow (With Uniswap, Zora, IPFS)
 
 ```mermaid
 sequenceDiagram
@@ -46,7 +46,7 @@ sequenceDiagram
 
 ---
 
-##  **Component Breakdown**
+##  Component Breakdown
 
 | **Layer**        | **Technology**                         | **Role**                                                 |
 | ---------------- | -------------------------------------- | -------------------------------------------------------- |
@@ -59,11 +59,11 @@ sequenceDiagram
 
 ---
 
-##  **Royalty Flow with Uniswap Integration**
+## Royalty Flow with Uniswap Integration
 
 1. **X% Royalty** → Sent to parent creators (based on DAG depth & declared splits).
 2. **Y% Platform Fee** → Converted to \$ZORA via Uniswap.
-3. **Referrer Cut (Optional)** → Routed to referrer wallet.
+3. **Referrer Cut** → Routed to referrer wallet.
 4. **Remaining Royalties** → Direct payout to remix creator in \$ETH or \$ZORA.
 
 **Royalty Splitting Example:**
