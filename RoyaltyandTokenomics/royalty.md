@@ -1,10 +1,10 @@
-## 6 Tokenomics & Royalties
+# 6 Tokenomics & Royalties
 
-### 6.1 Royalty Calculation Model
+## 6.1 Royalty Calculation Model
 
 Royalties for **derivative works** (remixes/inspired creations) are **programmatically enforced** via **onchain logic** embedded in minting contracts.
 
-#### **Royalty Formula:**
+### **Royalty Formula:**
 
 For any derivative content **Cₙ** inspired by parent **Cₙ₋₁**:
 
@@ -22,7 +22,7 @@ Where:
 
 ---
 
-#### Example:
+### Example:
 
 | Parameter             | Value       |
 | --------------------- | ----------- |
@@ -33,7 +33,7 @@ Where:
 
 ---
 
-### 6.2 Multi-Hop Royalty Splitting (Recursive)
+## 6.2 Multi-Hop Royalty Splitting (Recursive)
 
 For deep remix chains, **recursive royalty calculation** applies proportionally:
 
@@ -44,7 +44,7 @@ $$
 * **Depth (d)** → Number of ancestor nodes in DAG.
 * **Recursive Cap** → Set via governance; e.g., **max 3 hops** to avoid infinite recursion or micro-distributions.
 
-#### Onchain Example Flow:
+### Onchain Example Flow:
 
 ```plaintext
 Derivative NFT Sale → Contract → Traverses DAG → Splits payout to:
@@ -55,7 +55,7 @@ Derivative NFT Sale → Contract → Traverses DAG → Splits payout to:
 
 ---
 
-### 6.3 Role Responsibilities
+## 6.3 Role Responsibilities
 
 | Role                 | Responsibility                                      | Reward Structure                            |
 | -------------------- | --------------------------------------------------- | ------------------------------------------- |
@@ -65,14 +65,14 @@ Derivative NFT Sale → Contract → Traverses DAG → Splits payout to:
 
 ---
 
-### 6.4 Incentive Mechanisms
+## 6.4 Incentive Mechanisms
 
-#### 6.4.1 Platform Fees (Protocol Sustainability)
+### 6.4.1 Platform Fees (Protocol Sustainability)
 
 * Flat platform fee (e.g., **2.5%** of sale) directed to protocol treasury DAO.
 * Can be redirected to staking pools for creators → **yield on creative work**.
 
-#### 6.4.2 Referrer Bonuses
+### 6.4.2 Referrer Bonuses
 
 * Referrals tracked via ephemeral **referral tokens** signed with **EIP-712 signatures**.
 * Referrer receives **1–3%** of transaction volume depending on activity tier.
@@ -83,7 +83,7 @@ Derivative NFT Sale → Contract → Traverses DAG → Splits payout to:
 
 ---
 
-### 6.5 Implementation: Solidity Architecture
+## 6.5 Implementation: Solidity Architecture
 
 ```solidity
 struct RoyaltySplit {
@@ -94,7 +94,7 @@ struct RoyaltySplit {
 }
 ```
 
-#### Payout Function Flow:
+### Payout Function Flow:
 
 ```solidity
 function distributeRoyalty(uint256 salePrice, RoyaltySplit[] calldata splits) external payable {
