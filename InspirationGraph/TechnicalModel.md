@@ -47,7 +47,7 @@ struct InspirationNode {
 
 ## 2.3 Proof Integrity and Verification System
 
-#### a) **zkProof System Design**
+### a) **zkProof System Design**
 
 * **`proofHash`** → SHA256 commitment of zkSNARK output.
 * zk Circuit → Takes as inputs:
@@ -62,7 +62,7 @@ struct InspirationNode {
 
 ---
 
-#### b) **Advanced zkML Proofs (Future Planned)**
+### b) **Advanced zkML Proofs (Future Planned)**
 
 * **zkML Integration (WIP)** → Use zkSNARKs to encode *style similarity* or *content feature extraction*.
 
@@ -77,7 +77,7 @@ Input → Embedding(child) - Embedding(parent) → zk circuit → ≤ threshold 
 
 ---
 
-#### c) **Onchain Verification Pipeline:**
+### c) **Onchain Verification Pipeline:**
 
 ```plaintext
 1. submitProof(bytes calldata proof, bytes32 parent, bytes32 child)
