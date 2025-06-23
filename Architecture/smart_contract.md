@@ -12,7 +12,7 @@
 6. [Reputation System Implementation](#reputation-system-implementation)
 7. [Graph Theory Implementation](#graph-theory-implementation)
 8. [Security Analysis](#security-analysis)
-9. [Integration Patterns](#integration-patterns)
+9. [Integration with Uniswap and Zora](#integration-patterns)
 10. [Gas Optimization Strategies](#gas-optimization-strategies)
 
 ---
