@@ -1,4 +1,4 @@
-# ProofOfInspiration: Sponsor Technology Integration
+# zkInspire: Sponsor Technology Integration
 
 
 For code integration please visit Architecture directory
@@ -52,155 +52,220 @@ graph TD
 
 ---
 
-#  Uniswap V3 Integration
+#  Uniswap V4 Integration
 
-## Advanced DeFi Infrastructure
+## Next-Generation DeFi Infrastructure
 
-Our protocol leverages Uniswap V3's cutting-edge automated market maker (AMM) technology to create sophisticated economic mechanisms around creative inspiration.
+Our protocol leverages Uniswap V4's revolutionary hook-based architecture and singleton design to create unprecedented economic mechanisms around creative inspiration, offering enhanced customization and gas efficiency.
 
-## Core Uniswap Features We Utilize
+## Core Uniswap V4 Features We Utilize
 
-### 1. **Automated Token Swapping for Royalty Distribution**
-- **Multi-Token Support**: Convert royalties between ETH, ZORA, and other tokens automatically
-- **Optimal Price Discovery**: Leverage Uniswap's deep liquidity for best swap rates
-- **Minimal Slippage**: V3's concentrated liquidity ensures efficient trades
-- **Gas Optimization**: Batch operations to minimize transaction costs
+### 1. **Custom Hooks for Creator Economy**
+- **Inspiration Hooks**: Custom logic triggered on every swap involving creator tokens
+- **Royalty Distribution Hooks**: Automatic revenue sharing executed within swap transactions
+- **Dynamic Fee Hooks**: Fees that adjust based on inspiration depth and creator reputation
+- **Cross-Pool Arbitrage Hooks**: Optimize pricing across multiple creator token pools
 
-### 2. **Creator Token Liquidity Pools**
+### 2. **Singleton Architecture Benefits**
 ```mermaid
 sequenceDiagram
     participant Creator as Creator
-    participant Pool as Uniswap V3 Pool
+    participant Hook as Custom Hook
+    participant Singleton as V4 Singleton
     participant Treasury as Treasury Contract
     participant Buyer as NFT Buyer
     
     Buyer->>Treasury: Purchase Derivative NFT
-    Treasury->>Pool: Swap ETH → ZORA (Platform Fee)
-    Treasury->>Creator: Direct ETH (Creator Share)
-    Treasury->>Pool: Add Liquidity (Creator Token/ETH)
-    Pool-->>Creator: LP Tokens + Trading Fees
+    Treasury->>Singleton: Swap ETH → ZORA via Hook
+    Hook->>Hook: Execute Inspiration Logic
+    Hook->>Creator: Distribute Royalties
+    Hook->>Singleton: Complete Swap
+    Singleton-->>Treasury: Return Tokens
 ```
 
-### 3. **Dynamic Pricing Mechanisms**
-- **Bonding Curves**: Creator token prices increase with inspiration success
-- **Liquidity Incentives**: Creators earn trading fees by providing liquidity
-- **Price Discovery**: Market-driven valuation of creative influence
+### 3. **Advanced Pool Customization**
+- **Creator-Specific Pools**: Each creator can have customized pool behavior via hooks
+- **Inspiration-Weighted Fees**: Trading fees proportional to creative influence metrics
+- **Dynamic Liquidity Management**: Hooks that adjust liquidity based on derivative creation activity
+- **Cross-Token Routing**: Efficient multi-hop swaps across creator token ecosystems
 
-## Advanced Economic Models
+## Revolutionary V4 Innovations for Creators
 
-### **Inspiration-to-Earning (I2E) System**
-1. **Base Creation**: Creator mints original work, receives creator tokens
-2. **Derivative Creation**: New creator builds upon original, triggering revenue share
-3. **Automated Distribution**: Uniswap swaps handle multi-token payouts instantly
-4. **Compound Growth**: Original creators earn from entire inspiration tree
+### **Hook-Powered Inspiration Economics**
+1. **beforeSwap Hook**: Validate inspiration claims before any token exchange
+2. **afterSwap Hook**: Trigger automatic royalty distribution to inspiration chain
+3. **beforeAddLiquidity Hook**: Reward creators for providing liquidity with bonus tokens
+4. **afterRemoveLiquidity Hook**: Handle complex withdrawal scenarios with multi-level attribution
 
-### **Liquidity Mining for Creators**
-- **Creator Token Farms**: Stake creator tokens to earn platform rewards
-- **Inspiration Rewards**: Bonus tokens for works that inspire many derivatives
-- **Community Governance**: Use platform tokens to vote on protocol upgrades
+### **Gas-Optimized Creator Operations**
+- **Singleton Efficiency**: All pools share the same contract, reducing deployment costs by 99%
+- **Flash Accounting**: Settlement only at transaction end, enabling complex multi-step operations
+- **Batch Operations**: Multiple creator token operations in single transaction
+- **Hook Composability**: Combine multiple creator economy features in single swap
+
+---
+
+#  Advanced V4 Hook Implementations
+
+## Custom Creator Economy Hooks
+
+### **InspirationDistributionHook**
+```solidity
+contract InspirationDistributionHook {
+    function afterSwap(
+        PoolKey memory key,
+        IPoolManager.SwapParams memory params,
+        BalanceDelta delta
+    ) external returns (bytes4) {
+        // Calculate inspiration royalties
+        uint256 royaltyAmount = calculateInspirationRoyalties(delta);
+        
+        // Distribute to inspiration chain
+        distributeToInspirationTree(key.currency0, royaltyAmount);
+        
+        return BaseHook.afterSwap.selector;
+    }
+}
+```
+
+### **DynamicCreatorFeeHook**
+- **Reputation-Based Fees**: Lower fees for high-reputation creators
+- **Volume Incentives**: Decreasing fees with increased trading volume  
+- **Inspiration Bonuses**: Fee rebates for works that inspire many derivatives
+- **Community Governance**: Hook parameters voted on by token holders
+
+### **CrossPoolArbitrageHook**
+- **Multi-Pool Optimization**: Find best prices across all creator token pools
+- **Inspiration Value Transfer**: Move value efficiently between related creators
+- **Liquidity Aggregation**: Access liquidity from multiple related pools simultaneously
+- **MEV Protection**: Built-in protections against extractive arbitrage
+
+## V4 Economic Models
+
+### **Next-Generation Inspiration-to-Earning (I2E)**
+1. **Hook-Triggered Creation**: NFT minting triggers pool creation with custom hooks
+2. **Autonomous Distribution**: Hooks automatically handle complex royalty calculations
+3. **Compound Liquidity Growth**: Each derivative adds liquidity to ancestor pools
+4. **Cross-Creator Arbitrage**: Hooks enable value flow between related creator economies
+
+### **Advanced Liquidity Mining via Hooks**
+- **Inspiration Multipliers**: Higher rewards for inspiring popular derivatives
+- **Cross-Pool Rewards**: Earn from multiple pools based on creative relationships
+- **Dynamic APY**: Hook-calculated yields based on real-time inspiration metrics
+- **Governance Integration**: Vote on hook parameters with creator tokens
 
 ---
 
 #  Integrated User Flow
 
-## Complete Creator Journey
+## Complete Creator Journey with V4
 
-### **Phase 1: Content Creation & Upload**
+### **Phase 1: Content Creation & Advanced Pool Setup**
 1. **IPFS Storage**: Upload creative work to decentralized storage
 2. **Metadata Generation**: Automatic creation of rich metadata including inspiration claims
 3. **Zora Minting**: Deploy as NFT through Zora's battle-tested infrastructure
-4. **Pool Creation**: Optional Uniswap V3 pool for creator token trading
+4. **Custom Hook Deployment**: Deploy personalized hooks for creator-specific economics
+5. **V4 Pool Creation**: Create highly customized pool with inspiration-aware hooks
 
-### **Phase 2: Inspiration & Derivation**
+### **Phase 2: Inspiration & Hook-Powered Derivation**
 1. **Inspiration Declaration**: Creators declare which works inspired them
 2. **zkSNARK Proof**: Generate cryptographic proof of creative relationship
-3. **Revenue Share Setup**: Define percentage of earnings to share with inspirations
-4. **Derivative Minting**: Create new NFT with proven inspiration links
+3. **Hook Configuration**: Set up hooks to automatically handle inspiration royalties
+4. **Derivative Minting**: Create new NFT with proven inspiration links and custom economics
 
-### **Phase 3: Monetization & Distribution**
-1. **Sale/Auction**: List on Zora marketplace or any compatible platform
-2. **Automatic Swapping**: Uniswap converts sale proceeds to preferred tokens
-3. **Multi-Level Distribution**: Smart contracts distribute earnings up inspiration chain
-4. **Compound Growth**: All participants benefit from ecosystem growth
+### **Phase 3: Autonomous Monetization & Distribution**
+1. **Hook-Enabled Trading**: All trades automatically trigger inspiration economics
+2. **Multi-Hop Optimization**: V4's routing finds optimal paths across creator economies
+3. **Automated Governance**: Hooks execute complex multi-party revenue sharing
+4. **Ecosystem Growth**: Each transaction strengthens the entire inspiration network
 
 ---
 
-# Innovation Highlights
+# V4 Innovation Highlights
 
 ## Technical Breakthroughs
 
-### **Zero-Knowledge Inspiration Proofs**
-- **Privacy-Preserving**: Prove inspiration without revealing creative process details
-- **Verifiable Claims**: Cryptographically secure attribution that can't be faked
-- **Scalable Verification**: Efficient on-chain verification of complex creative relationships
+### **Hook-Based Creative Economics**
+- **Programmable AMMs**: Each creator can define custom trading logic
+- **Composable Inspiration**: Stack multiple hooks for complex creative relationships
+- **Gas-Optimized Attribution**: Singleton architecture makes complex operations affordable
+- **Upgradeable Economics**: Hooks can evolve as creator needs change
 
-### **Cross-Protocol Value Flow**
+### **Cross-Protocol Value Flow with Enhanced Efficiency**
 - **Zora NFTs**: Store and transfer creative ownership
-- **Uniswap Swaps**: Enable seamless value exchange across token types
+- **V4 Hooks**: Execute custom creator economy logic within swaps
+- **Singleton Pools**: 99% reduction in gas costs for pool operations
+- **Flash Accounting**: Enable complex multi-step creator operations
 - **IPFS Storage**: Decentralized, permanent creative asset storage
 - **zkSNARK Proofs**: Cryptographic guarantees of creative authenticity
 
 ## Economic Innovation
 
-### **Sustainable Creator Economy**
-- **Fair Attribution**: Mathematical guarantee that inspiration is rewarded
-- **Compound Creativity**: Original creators benefit from entire inspiration tree
-- **Reduced Platform Extraction**: Direct creator-to-creator value transfer
-- **Market-Driven Pricing**: True price discovery through decentralized markets
+### **Programmable Creator Markets**
+- **Custom Market Logic**: Each creator can define unique market behavior
+- **Inspiration-Aware Pricing**: Hooks that factor creative influence into pricing
+- **Autonomous Value Distribution**: No manual intervention needed for royalty sharing
+- **Ecosystem Network Effects**: Each new creator strengthens all related creators
 
 ---
 
 #  Impact & Future Vision
 
-## Transforming Creative Industries
+## Transforming Creative Industries with V4
 
 ### **Music Industry Revolution**
-- **Sample Clearance**: Automatic, transparent sample clearance and payment
-- **Remix Culture**: Legal framework for remix and derivative works
-- **Producer Recognition**: Beat makers and producers get ongoing royalties
+- **Real-Time Sample Clearance**: Hooks execute sample payments within swap transactions
+- **Programmable Remix Rights**: Custom hooks define terms for derivative works
+- **Producer Recognition**: Sophisticated hook logic for complex attribution scenarios
+- **Cross-Genre Value Flow**: V4's routing enables value transfer across musical styles
 
 ### **Visual Arts Ecosystem**  
-- **Art Movement Tracking**: Follow how artistic styles and movements evolve
-- **Collaborative Creation**: Multiple artists can contribute and share in success
-- **Digital Art Provenance**: Immutable record of artistic influence and inspiration
+- **Dynamic Art Pricing**: Hooks that adjust prices based on inspiration network growth
+- **Collaborative Creation Economics**: Multi-creator hooks for complex collaborative works
+- **Style Evolution Tracking**: Hooks that reward style innovation and influence
+- **Digital Art Provenance**: Immutable, hook-enforced creative lineage
 
 ### **Content Creator Economy**
-- **Meme Attribution**: Track and monetize viral content creation
-- **Influence Mapping**: Quantify and reward creative influence
-- **Cross-Platform Value**: Earnings follow creators across all platforms
+- **Viral Content Attribution**: Hooks that automatically reward viral content creators
+- **Cross-Platform Value**: Hook-based economics work across all platforms
+- **Influence Quantification**: Mathematical measurement of creative impact via hook metrics
+- **Meme Economy**: Sophisticated attribution for iterative creative formats
 
-## Next-Generation Features
+## Next-Generation V4 Features
 
-### **AI Integration**
-- **Automated Inspiration Detection**: AI analysis to suggest inspiration claims
-- **Style Transfer Proofs**: zkML proofs for AI-generated derivative works
-- **Creative DNA**: Genetic-style tracking of artistic influence propagation
+### **AI Integration via Hooks**
+- **ML-Powered Hook Logic**: AI that optimizes creator economics in real-time
+- **Automated Inspiration Detection**: Hooks that suggest and verify inspiration claims
+- **Style Transfer Proofs**: zkML integration via custom hooks
+- **Creative DNA Evolution**: Hook-tracked artistic influence propagation
 
-### **Cross-Chain Expansion**
-- **Multi-Chain NFTs**: Support for Ethereum, Polygon, Base, and other chains
-- **Universal Liquidity**: Aggregate liquidity across all major DEXs
-- **Interoperable Inspiration**: Track inspiration across blockchain ecosystems
+### **Cross-Chain Hook Network**
+- **Multi-Chain Hooks**: Inspiration tracking across all blockchain ecosystems
+- **Universal Creator Liquidity**: Aggregate liquidity via cross-chain hooks
+- **Interoperable Economics**: Creator economics that work across all platforms
+- **Global Inspiration Graph**: Planet-scale creative attribution network
 
 ---
 
 #  Sponsor Technology Benefits
 
 ## For Zora Protocol
-- **Expanded Use Case**: Showcases advanced creator economy applications
-- **Network Effects**: More creators minting through Zora infrastructure
-- **Innovation Driver**: Pushes boundaries of what's possible with creator tools
-- **Ecosystem Growth**: Attracts developers building on Zora's foundation
+- **Advanced Hook Integration**: Showcases Zora NFTs working with cutting-edge V4 hooks
+- **Enhanced Creator Tools**: Demonstrates next-generation creator economy possibilities
+- **Network Effects**: More sophisticated creators attracted to Zora ecosystem
+- **Innovation Leadership**: Positions Zora at forefront of creator economy evolution
 
-## For Uniswap
-- **Novel Trading Pairs**: Creator tokens create new trading opportunities
-- **Volume Generation**: Automated swapping increases protocol usage
-- **DeFi Innovation**: Demonstrates advanced use cases beyond simple token swapping
-- **Liquidity Attraction**: Creator communities bring new liquidity sources
+## For Uniswap V4
+- **Hook Ecosystem Growth**: Demonstrates powerful real-world applications of hook architecture
+- **Creator Economy Leadership**: Establishes V4 as the infrastructure for creator economies
+- **Volume Generation**: Complex creator operations increase protocol usage significantly
+- **Technical Innovation**: Pushes boundaries of what's possible with hooks and singleton design
+- **Liquidity Innovation**: Creator communities bring novel liquidity patterns and behaviors
 
 ## Mutual Benefits
-- **Technical Synergy**: Zora's NFT infrastructure + Uniswap's DeFi primitives
-- **Ecosystem Expansion**: Both protocols benefit from increased adoption
-- **Innovation Catalyst**: Pushes both platforms toward next-generation features
-- **Market Leadership**: Positions both as leaders in creator economy infrastructure
+- **Technical Synergy**: Zora's NFT infrastructure + V4's programmable AMM capabilities
+- **Ecosystem Leadership**: Both protocols become essential creator economy infrastructure
+- **Innovation Catalyst**: Drives development of next-generation creator tools and economics
+- **Market Dominance**: Establishes the definitive standard for decentralized creator economies
 
 ---
